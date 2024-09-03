@@ -13,21 +13,20 @@ Megablock construction uses Python's sklearn.cluster and concurrent.futures whic
 For large inputs, it may be better to use splitf_in_mblocks0.pl, which uses basic Perl to efficiently bundle BWT blocks for use with the inverse BWT. 
 This is done by setting the variable $megasplit to "parts" in the compress and decompress drivers. 
 
-Compress / decompress sequence:
-# need 6 arguments: infile outfolder blsize_for_bwt nparts_per_mblock max_mblock_size nthreads
+-> Compress / decompress sequence:
+-> need 6 arguments: infile outfolder blsize_for_bwt nparts_per_mblock max_mblock_size nthreads
 $ ./parallel_compress.pl comp_data/comb2.dat out_cmp/ 2.0MB 8 20MB 8
 
-# review compressed data:
+-> review compressed data:
 $ ls out_cmp/
 comp_0.bzp  comp_1.bzp  comp_2.bzp  comp_3.bzp  comp_4.bzp  comp_5.bzp  comp_6.bzp  comp_7.bzp  metadata.json
 $ du -hs comp_data/comb2.dat out_cmp/
 111M 
 13M 
 
-# now decompress output folder to recover the original. 
-# need 4 arguments: infolder outfile block_size nthreads
+-> now decompress output folder to recover the original. 
+-> need 4 arguments: infolder outfile block_size nthreads
 $ ./parallel_decompress.pl out_cmp/ out.rec 2.0MB 4
 
-# Size compare and diff reconstruction:
+-> Size compare and diff reconstruction:
 $ diff comp_data/comb2.dat out.rec
-
