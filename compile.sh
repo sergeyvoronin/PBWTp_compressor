@@ -9,4 +9,4 @@ gcc arith_adapt1.c -o ac1 -Os
 
 g++ nelson/RLE.CPP -o rle0 
 g++ nelson/UNRLE.CPP -o unrle0 
-
+g++ nelson/UNMTF.CPP -o unmtf0 
