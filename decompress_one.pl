@@ -20,8 +20,8 @@ print($cmd);
 system($cmd);
 
 print "running invMTF..\n";
-#$cmd = "./unmtf0 < temp/inverse/inv_ac2_p$key > temp/inverse/inv_ac3_p$key";
-$cmd = "./mtfzle1 -i temp/inverse/inv_ac2_p$key temp/inverse/inv_ac3_p$key";
+$cmd = "./unmtf0 < temp/inverse/inv_ac2_p$key > temp/inverse/inv_ac3_p$key";
+#$cmd = "./mtfzle1 -i temp/inverse/inv_ac2_p$key temp/inverse/inv_ac3_p$key";
 print($cmd);
 system($cmd);
 

@@ -97,11 +97,11 @@ if($megasplit =~ m/cluster/){
 	$cmd = "./reconstruct_from_mblocks1.py temp/file_parts/ temp/bwt_recon.out";
 	print("$cmd\n");
 	system($cmd);
-	$cmd = " ./unbwta temp/bwt_recon.out $outfile $blsize";
+	$cmd = " ./unbwtb temp/bwt_recon.out $outfile $blsize";
 	print("$cmd\n");
 	system($cmd);
 } else {
-	$cmd = "./unbwta $cwd/temp/file_parts/* $outfile $blsize";
+	$cmd = "./unbwtb $cwd/temp/file_parts/* $outfile $blsize";
 	printf("ibwt cmd (being performed below..): $cmd\n");
 
 	my $part_dir = "$cwd/temp/file_parts/";
@@ -116,8 +116,8 @@ if($megasplit =~ m/cluster/){
 			# Extract the part number from the filename
 			my ($part_num) = $file =~ /part(\d+)\.dat$/;
 			my $file_out = "$part_dir/uncomp$part_num.dat";
-			#my $command = "./unbwtb < $file > $file_out"; 
-			my $command = "./unbwta $file $file_out $blsize"; 
+			#my $command = "./unbwta $file $file_out $blsize"; 
+			my $command = "./unbwtb $file $file_out $blsize"; 
 			print("$command\n");
 			
 

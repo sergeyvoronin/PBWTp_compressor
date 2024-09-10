@@ -1,6 +1,5 @@
 # PBWTp_compressor
 Experimental Burrows-Wheeler based parallel lossless compressor. Sergey Voronin / 2024. 
-License: https://www.gnu.org/licenses/gpl-3.0.en.html
 
 Builds on Mark Nelson's classical implementation.
 Enhancements such as parallel BWT, byte frequency grouping, move to front and zero length encoding, and arithmetic coding. 
@@ -30,3 +29,5 @@ $ ./parallel_decompress.pl out_cmp/ out.rec 2.0MB 4
 
 -> Size compare and diff reconstruction:
 $ diff comp_data/comb2.dat out.rec
+
+License: https://www.gnu.org/licenses/gpl-3.0.en.html
