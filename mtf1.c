@@ -5,16 +5,6 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-// The number of bits in "register"
-#define BITS_IN_REGISTER 16
-
-// The max value in register
-#define TOP_VALUE (((long) 1 << BITS_IN_REGISTER) - 1)
-
-// set ranges
-#define FIRST_QTR (TOP_VALUE / 4 + 1)
-#define HALF (2 * FIRST_QTR)
-#define THIRD_QTR (3 * FIRST_QTR)
 
 // # symbols in alphabet 
 #define NO_OF_CHARS 256
@@ -22,9 +12,6 @@
 #define EOF_SYMBOL    (NO_OF_CHARS + 1)
 // Total number of symbols
 #define NO_OF_SYMBOLS (NO_OF_CHARS + 1)
-
-// The limit of frequency for scale
-#define MAX_FREQUENCY 16383
 
 // The tables for recoding
 unsigned char index_to_char [NO_OF_SYMBOLS];

@@ -20,13 +20,13 @@ print($cmd);
 system($cmd);
 
 print "running invMTF..\n";
-$cmd = "./unmtf0 < temp/inverse/inv_ac2_p$key > temp/inverse/inv_ac3_p$key";
+#$cmd = "./unmtf0 < temp/inverse/inv_ac2_p$key > temp/inverse/inv_ac3_p$key";
+$cmd = "./mtf2 -i temp/inverse/inv_ac2_p$key temp/inverse/inv_ac3_p$key";
 #$cmd = "./mtfzle1 -i temp/inverse/inv_ac2_p$key temp/inverse/inv_ac3_p$key";
 print($cmd);
 system($cmd);
 
 print "running invRLE..\n";
-#$cmd = "./unrle0 < temp/inverse/inv_ac3_p$key > temp/file_parts/part_$key.dat";
 $cmd = "./unrle0 < temp/inverse/inv_ac3_p$key > temp/file_parts/megablock_$key.dat";
 print($cmd);
 system($cmd);
