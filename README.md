@@ -16,18 +16,19 @@ This is done by setting the variable $megasplit to "parts" in the compress and d
 -> need 6 arguments: infile outfolder blsize_for_bwt nparts_per_mblock max_mblock_size nthreads
 $ ./parallel_compress.pl comp_data/comb2.dat out_cmp/ 2.0MB 8 20MB 8
 
--> review compressed data:
+-> review compressed data and original / compressed sizes:
 $ ls out_cmp/
 comp_0.bzp  comp_1.bzp  comp_2.bzp  comp_3.bzp  comp_4.bzp  comp_5.bzp  comp_6.bzp  comp_7.bzp  metadata.json
 $ du -hs comp_data/comb2.dat out_cmp/
 111M 
-13M 
+12M 
 
 -> now decompress output folder to recover the original. 
 -> need 4 arguments: infolder outfile block_size nthreads
 $ ./parallel_decompress.pl out_cmp/ out.rec 2.0MB 4
 
--> Size compare and diff reconstruction:
+-> diff original and reconstruction:
 $ diff comp_data/comb2.dat out.rec
 
+Paper: Voronin, Sergey, Eugene Borovikov, and Raqibul Hasan. "Clustering and presorting for parallel burrows wheeler-based compression." International Journal of Modeling, Simulation, and Scientific Computing 12, no. 06 (2021): 2150050. 
 License: https://www.gnu.org/licenses/gpl-3.0.en.html

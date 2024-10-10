@@ -15,6 +15,7 @@ my $nparts_per_mblock = $ARGV[3];
 my $max_mblock_size = $ARGV[4];
 my $nthreads = $ARGV[5];
 my $megasplit = "cluster"; # set "cluster" or "parts"
+my $cmd;
 
 print "infile: $infile\n";
 print "outfolder: $outfolder\n";
@@ -23,8 +24,23 @@ print "num parts per megablock: $nparts_per_mblock\n";
 print "max size of megablock (KB/MB): $max_mblock_size\n";
 print "nthreads: $nthreads\n";
 
+
+# exit if file/directory does not exist
+unless (-e $infile) {
+  die "$infile does not exist.\n";
+}
+
+# archive if directory input
+if (-d $infile) {
+	my $tar_file = 'archive.tar.gz';
+	$cmd = "tar -czvf $tar_file $infile";
+  system($cmd) == 0 or die "Error creating tar archive: $!\n";
+  print "Directory $infile archived to $tar_file\n";
+	$infile = $tar_file;
+} 
+
 $cmd = "mkdir $outfolder";
-system($cmd);
+system($cmd) == 0 or die "Error creating $outfolder: $!\n";
 
 my ( $blsize_num ) = ( $blsize =~ /(\d+(?:\.\d+)?)/ );
 print("blsize_num = $blsize_num\n");
